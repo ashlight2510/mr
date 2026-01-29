@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MR 메이커 · 보컬 제거기 | mr.funnyfunny.cloud</title>
-  <meta name="description" content="보컬만 듣기 / MR만 듣기. 브라우저에서 바로 분리하고 미리듣기. 서버 업로드 없이 클라이언트에서 처리합니다." />
-  <meta property="og:title" content="MR 메이커 · 보컬 제거기" />
-  <meta property="og:description" content="보컬만 듣기 / MR만 듣기. 브라우저에서 바로 분리하고 미리듣기." />
-  <meta property="og:url" content="https://mr.funnyfunny.cloud" />
+  <title>MR Maker · Vocal Remover | mr.funnyfunny.cloud</title>
+  <meta name="description" content="Listen to vocals only or MR only. Separate stereo in-browser, preview and download. All processing happens in your browser—no server uploads." />
+  <meta property="og:title" content="MR Maker · Vocal Remover" />
+  <meta property="og:description" content="Listen to vocals only or MR only. Separate stereo in-browser, preview and download." />
+  <meta property="og:url" content="https://mr.funnyfunny.cloud/en.html" />
   <meta property="og:type" content="website" />
   <link rel="alternate" hreflang="ko" href="https://mr.funnyfunny.cloud/" />
   <link rel="alternate" hreflang="en" href="https://mr.funnyfunny.cloud/en.html" />
@@ -29,7 +29,7 @@
     }
     body {
       margin: 0;
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -249,22 +249,22 @@
   <div class="page">
     <header>
       <div class="lang-switch">
-        <a href="./en.html">🇺🇸 English</a>
+        <a href="./index.html">🇰🇷 한국어</a>
       </div>
-      <h1>MR 메이커 · 보컬 제거기</h1>
-      <p class="tagline">보컬만 듣기 / MR만 듣기 · 브라우저에서 바로</p>
+      <h1>MR Maker · Vocal Remover</h1>
+      <p class="tagline">Vocals only / MR only · Right in your browser</p>
     </header>
 
     <div class="card">
       <div id="dropSection" class="dropzone">
         <input type="file" id="fileInput" accept="audio/*" />
         <div class="icon">🎵</div>
-        <div class="label">음원 파일 올리기</div>
-        <div class="hint">MP3, WAV, M4A 등 · 스테레오 추천</div>
+        <div class="label">Upload audio</div>
+        <div class="hint">MP3, WAV, M4A, etc. · Stereo recommended</div>
       </div>
 
       <div id="loadingSection" class="loading-box">
-        <div class="loader-label">미리듣기 처리 중…</div>
+        <div class="loader-label">Processing preview…</div>
         <div class="loader-bars">
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
@@ -272,9 +272,9 @@
 
       <div id="playerSection" class="player-box">
         <div class="mode-tabs">
-          <button type="button" data-mode="original">원본</button>
-          <button type="button" data-mode="vocal">보컬만 듣기</button>
-          <button type="button" data-mode="mr">MR만 듣기</button>
+          <button type="button" data-mode="original">Original</button>
+          <button type="button" data-mode="vocal">Vocals only</button>
+          <button type="button" data-mode="mr">MR only</button>
         </div>
         <div class="progress-wrap" id="progressWrap">
           <div class="progress-bar" id="progressBar"></div>
@@ -284,23 +284,23 @@
           <span id="totalTime">0:00</span>
         </div>
         <div class="controls">
-          <button type="button" class="btn btn-play" id="playBtn" title="재생/일시정지">▶</button>
+          <button type="button" class="btn btn-play" id="playBtn" title="Play / Pause">▶</button>
         </div>
         <div class="download-row">
-          <button type="button" class="btn btn-dl vocal" id="dlVocal">보컬만 다운로드</button>
-          <button type="button" class="btn btn-dl mr" id="dlMr">MR 다운로드</button>
+          <button type="button" class="btn btn-dl vocal" id="dlVocal">Download vocals</button>
+          <button type="button" class="btn btn-dl mr" id="dlMr">Download MR</button>
         </div>
         <div class="filename" id="fileName"></div>
         <div class="reset-wrap">
-          <button type="button" class="btn-reset" id="resetBtn">다른 파일 올리기</button>
+          <button type="button" class="btn-reset" id="resetBtn">Upload another file</button>
         </div>
       </div>
     </div>
 
-    <p class="warn">스테레오 음원에서 보컬(중앙) / MR(양옆) 분리합니다. 모노는 효과가 제한적일 수 있어요.</p>
+    <p class="warn">Separates vocals (center) / MR (sides) from stereo. Mono may have limited effect.</p>
 
     <footer>
-      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" class="footer-link">✨ 다른 서비스 보기</a>
+      <a href="https://funnyfunny.cloud" target="_blank" rel="noopener" class="footer-link">✨ View other services</a>
       <div>
         <a href="https://funnyfunny.cloud" target="_blank" rel="noopener">funnyfunny.cloud</a> · mr.funnyfunny.cloud
       </div>
@@ -544,7 +544,7 @@
     if (!vocalBuffer || !lastFile) return;
     const base = lastFile.name.replace(/\.[^.]*$/, '') || 'audio';
     const wav = createWavFromBuffer(vocalBuffer);
-    downloadBlob(new Blob([wav], { type: 'audio/wav' }), base + '_보컬.wav');
+    downloadBlob(new Blob([wav], { type: 'audio/wav' }), base + '_vocal.wav');
   });
 
   dlMr.addEventListener('click', function () {
@@ -641,7 +641,7 @@
         totalTimeEl.textContent = formatTime(dur);
       }).catch(function (err) {
         console.error(err);
-        alert('음원 디코딩에 실패했어요. 다른 파일을 시도해주세요.');
+        alert('Decoding failed. Try another file.');
         showDrop();
       });
     };
